@@ -1,85 +1,99 @@
 ﻿#include <iostream>
+#include <string>
 using namespace std;
 
 /*
-возможность увеличить своё значение на 1
-возможность уменьшить своё значение на 1
-возможность посмотреть своё текущее значение
-возможность создания экземпляра класса с начальным значением по умолчанию (1)
-возможность создания экземпляра класса с инициализирующим начальным значением
+Напишите код, демонстрирующий работу класса Counter. Спросите у пользователя, хочет ли он указать начальное значение для счётчика. 
+Если хочет, дайте ему возможность это сделать. Затем предоставьте пользователю возможность вводить команды:
+
++: увеличьте счётчик на 1
+-: уменьшите счётчик на 1
+=: выведите текущее значение счётчика
+x: завершите работу программы
 */
+
 
 class Counter
 {
 public:
-    int Set_by1(int user_input)
+    void Set_by1()
     {
-        user_input = 1;
-        this->user_input = user_input;
-        return user_input;
+        this->user_input = 1;
     }
     int Set_by_user(int user_input)
     {
         this->user_input = user_input;
         return user_input;
     }
-    int Increase(char command)
+    void Increase(int user_input)
     {
-        if (command == '+')
-        {
-            user_input =+ 1;
-        } 
-        return user_input;
+        this->user_input += 1;
     }
-    void Decrease(char command)
+    void Decrease(int user_input)
     {
-        if (command == '-')
-        {
-            user_input - 1;
-        }
+        this->user_input -= 1;
     }
-    void Show(int user_input)
+    int Show(int user_input)
     {
-        cout << user_input << endl;
+        return this->user_input;
     }
-    void Exit(char exit)
+    /*void Exit(char exit)
     {
         if (exit == 'x')
         {
             cout << "До свидания!";
         }
-    }
+    }*/
 private:
-    char increase = '+';
-    char decrease = '-';
-    char show = '=';
-    char exit = 'x';
+
     int user_input;
 };
 
-void Screen_output(double num1, double num2)
+char Case_commands(char command)
 {
-    Counter screen;
-    //cout << endl << "num1 + num2 = " << screen.add(user_input) << endl;
-
+    /*switch (command)
+    {
+    case Commands::Increment: counter.increment(); break;
+    case Commands::Decremenet: counter.decrement(); break;
+    case Commands::Show: cout << counter.getValue() << endl; break;*/
 }
-
 
 int main()
 {
     setlocale(LC_ALL, "Ru");
 
-    Counter counter;
+    Counter command_counter;
 
     int user_input = 0;
     char command = {};
+    string answer;
 
-    //cout << "Вы хотите указать начальное значение счётчика?"
-    cout << "Введите свое число: ";
-    cin >> user_input;
-    counter.Set_by_user(user_input);
-    cout << "Введите команду + : ";
-    cin >> command;
-    counter.Increase(command);
-    counter.Show(user_input);
+    cout << "Вы хотите указать начальное значение счётчика? Введите yes или no: ";
+    cin >> answer;
+    if (answer == "yes")
+    {
+        cout << "Введите свое число: ";
+        cin >> user_input;
+        command_counter.Set_by_user(user_input);
+    }
+    if (answer == "no")
+    {
+        command_counter.Set_by1();
+    }
+
+    do
+    {
+        cout << endl << "Введите команду('+', '-', '=' или 'x') : ";
+        cin >> command;
+        if (command == 'x')
+        {
+            cout << "До свидания!" << endl;
+            break;
+        }
+        cout << Case_commands(command);
+    } while (command != 'x');
+    //counter.Increase(user_input);
+    //cout << counter.Show(user_input) << endl;
+
+    return 0;
 }
