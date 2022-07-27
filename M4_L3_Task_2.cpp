@@ -25,38 +25,45 @@ public:
         this->user_input = user_input;
         return user_input;
     }
-    void Increase(int user_input)
+    int Increment(int user_input)
     {
-        this->user_input += 1;
+        return this->user_input += 1;
     }
-    void Decrease(int user_input)
+    int Decrement(int user_input)
     {
-        this->user_input -= 1;
+        return this->user_input -= 1;
     }
-    int Show(int user_input)
+    int Get_value(int user_input)
     {
         return this->user_input;
     }
-    /*void Exit(char exit)
-    {
-        if (exit == 'x')
-        {
-            cout << "До свидания!";
-        }
-    }*/
+
 private:
 
     int user_input;
 };
 
-char Case_commands(char command)
+/*char Case_commands(char command)
 {
-    /*switch (command)
+    Counter commands;
+    switch (command)
     {
-    case Commands::Increment: counter.increment(); break;
-    case Commands::Decremenet: counter.decrement(); break;
-    case Commands::Show: cout << counter.getValue() << endl; break;*/
-}
+    case '+':
+    {
+        return commands.Increment(); 
+        break;
+    }
+    case '-':
+    {
+        return commands.Decrement();
+        break;
+    }
+    case '=':
+    {
+        cout << commands.Get_value() << endl;
+        break;
+    }
+}*/
 
 int main()
 {
@@ -83,17 +90,53 @@ int main()
 
     do
     {
-        cout << endl << "Введите команду('+', '-', '=' или 'x') : ";
+        cout << "Введите команду('+', '-', '=' или 'x') : ";
         cin >> command;
+        if (command == '+')
+        {
+            command_counter.Increment(user_input);
+        }
+        if (command == '-')
+        {
+            command_counter.Decrement(user_input);
+        }
+        if (command == '=')
+        {
+            cout << command_counter.Get_value(user_input) << endl;
+        }
         if (command == 'x')
         {
             cout << "До свидания!" << endl;
             break;
         }
-        cout << Case_commands(command);
+
     } while (command != 'x');
-    //counter.Increase(user_input);
-    //cout << counter.Show(user_input) << endl;
+
+    /*cout << "Введите команду('+', '-', '=' или 'x') : ";
+    cin >> command;
+
+    while (command != 'x')
+    {
+        cout << endl << "Введите команду('+', '-', '=' или 'x') : ";
+        cin >> command;
+        if (command == '+')
+        {
+            command_counter.Increment(user_input);
+        }
+        if (command == '-')
+        {
+            command_counter.Decrement(user_input);
+        }
+        if (command == '=')
+        {
+            cout << command_counter.Get_value(user_input);
+        }
+        if (command == 'x')
+        {
+            cout << "До свидания!" << endl;
+            break;
+        }
+    }*/
 
     return 0;
 }
