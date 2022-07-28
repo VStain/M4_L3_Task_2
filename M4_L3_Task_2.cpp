@@ -43,27 +43,15 @@ private:
     int user_input;
 };
 
-/*char Case_commands(char command)
+enum class Commands
 {
-    Counter commands;
-    switch (command)
-    {
-    case '+':
-    {
-        return commands.Increment(); 
-        break;
-    }
-    case '-':
-    {
-        return commands.Decrement();
-        break;
-    }
-    case '=':
-    {
-        cout << commands.Get_value() << endl;
-        break;
-    }
-}*/
+    Increment = '+',
+    Decrement = '-',
+    Get_value = '=',
+    Exit = 'x',
+};
+
+
 
 int main()
 {
@@ -92,6 +80,36 @@ int main()
     {
         cout << "Введите команду('+', '-', '=' или 'x') : ";
         cin >> command;
+        switch (static_cast<Commands>(command))
+        {
+        case Commands::Increment:
+        {
+            command_counter.Increment(user_input);
+            break;
+        }
+        case Commands::Decrement:
+        {
+            command_counter.Increment(user_input);
+            break;
+        }
+        case Commands::Get_value:
+        {
+            cout << command_counter.Get_value(user_input) << endl;
+            break;
+        }
+        case Commands::Exit:
+        {
+            cout << "До свидания!" << endl;
+            break;
+        }
+        }
+    } while (static_cast<Commands>(command) != Commands::Exit);
+
+    /* ВАРИАНТ С ЦИКЛОМ DO WHILE
+    do
+    {
+        cout << "Введите команду('+', '-', '=' или 'x') : ";
+        cin >> command;
         if (command == '+')
         {
             command_counter.Increment(user_input);
@@ -110,9 +128,10 @@ int main()
             break;
         }
 
-    } while (command != 'x');
+    } while (command != 'x');*/
 
-    /*cout << "Введите команду('+', '-', '=' или 'x') : ";
+    /* ВАРИАНТ С WHILE
+    cout << "Введите команду('+', '-', '=' или 'x') : ";
     cin >> command;
 
     while (command != 'x')
