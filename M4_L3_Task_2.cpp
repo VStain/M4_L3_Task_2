@@ -25,15 +25,15 @@ public:
         this->user_input = user_input;
         return user_input;
     }
-    int Increment(int user_input)
+    void Increment()
     {
-        return this->user_input += 1;
+        this->user_input += 1;
     }
-    int Decrement(int user_input)
+    void Decrement()
     {
-        return this->user_input -= 1;
+        this->user_input -= 1;
     }
-    int Get_value(int user_input)
+    int Get_value()
     {
         return this->user_input;
     }
@@ -84,17 +84,17 @@ int main()
         {
         case Commands::Increment:
         {
-            command_counter.Increment(user_input);
+            command_counter.Increment();
             break;
         }
         case Commands::Decrement:
         {
-            command_counter.Increment(user_input);
+            command_counter.Increment();
             break;
         }
         case Commands::Get_value:
         {
-            cout << command_counter.Get_value(user_input) << endl;
+            cout << command_counter.Get_value() << endl;
             break;
         }
         case Commands::Exit:
