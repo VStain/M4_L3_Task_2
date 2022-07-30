@@ -63,18 +63,22 @@ int main()
     char command = {};
     string answer;
 
-    cout << "Вы хотите указать начальное значение счётчика? Введите yes или no: ";
-    cin >> answer;
-    if (answer == "yes")
+    while (answer != "yes" && answer != "no")
     {
-        cout << "Введите свое число: ";
-        cin >> user_input;
-        command_counter.Set_by_user(user_input);
+        cout << "Вы хотите указать начальное значение счётчика? Введите yes или no: ";
+        cin >> answer;
+        if (answer == "yes")
+        {
+            cout << "Введите свое число: ";
+            cin >> user_input;
+            command_counter.Set_by_user(user_input);
+        }
+        if (answer == "no")
+        {
+            command_counter.Set_by1();
+        }
     }
-    if (answer == "no")
-    {
-        command_counter.Set_by1();
-    }
+
 
     do
     {
