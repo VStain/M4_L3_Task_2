@@ -78,12 +78,12 @@ int main()
         {
             cout << "Введите свое число: ";
             cin >> user_input;
-            Counter Counter(user_input);
+            command_counter = { user_input };
             //command_counter.Set_by_user(user_input);
         }
         if (answer == "no")
         {
-            Counter Сounter();
+            command_counter;
             //command_counter.Set_by1();
         }
     }
@@ -96,10 +96,12 @@ int main()
         if (command != '+' && command != '-' && command != '=' && command != 'x')
         {
             cout << "Неправильная команда!\t";
+            continue;
         }
         if (command == 'x')
         {
             cout << "До свидания! ";
+            break;
         }
         else
         {
