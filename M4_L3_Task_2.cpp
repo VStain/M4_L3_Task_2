@@ -16,7 +16,7 @@ x: завершите работу программы
 class Counter
 {
 public:
-    void Set_by1()
+    /*void Set_by1()
     {
         this->user_input = 1;
     }
@@ -24,7 +24,7 @@ public:
     {
         this->user_input = user_input;
         return user_input;
-    }
+    }*/
     void Increment()
     {
         this->user_input += 1;
@@ -37,6 +37,14 @@ public:
     {
         return this->user_input;
     }
+    Counter(int user_input)
+    {
+        this->user_input = user_input;
+    }
+    Counter()
+    {
+        user_input = 1;
+    }
 
 private:
 
@@ -48,7 +56,6 @@ enum class Commands
     Increment = '+',
     Decrement = '-',
     Get_value = '=',
-    Exit = 'x',
 };
 
 
@@ -71,43 +78,51 @@ int main()
         {
             cout << "Введите свое число: ";
             cin >> user_input;
-            command_counter.Set_by_user(user_input);
+            Counter Counter(user_input);
+            //command_counter.Set_by_user(user_input);
         }
         if (answer == "no")
         {
-            command_counter.Set_by1();
+            Counter Сounter();
+            //command_counter.Set_by1();
         }
     }
 
 
     do
     {
-        cout << "Введите команду('+', '-', '=' или 'x') : ";
+        cout << "Введите команду ('+', '-', '=' или 'x') : ";
         cin >> command;
-        switch (static_cast<Commands>(command))
+        if (command != '+' && command != '-' && command != '=' && command != 'x')
         {
-        case Commands::Increment:
+            cout << "Неправильная команда!\t";
+        }
+        if (command == 'x')
         {
-            command_counter.Increment();
-            break;
+            cout << "До свидания! ";
         }
-        case Commands::Decrement:
+        else
         {
-            command_counter.Increment();
-            break;
+            switch (static_cast<Commands>(command))
+            {
+            case Commands::Increment:
+            {
+                command_counter.Increment();
+                break;
+            }
+            case Commands::Decrement:
+            {
+                command_counter.Decrement();
+                break;
+            }
+            case Commands::Get_value:
+            {
+                cout << command_counter.Get_value() << endl;
+                break;
+            }
+            }
         }
-        case Commands::Get_value:
-        {
-            cout << command_counter.Get_value() << endl;
-            break;
-        }
-        case Commands::Exit:
-        {
-            cout << "До свидания!" << endl;
-            break;
-        }
-        }
-    } while (static_cast<Commands>(command) != Commands::Exit);
+    } while (command != 'x');
 
     /* ВАРИАНТ С ЦИКЛОМ DO WHILE
     do
