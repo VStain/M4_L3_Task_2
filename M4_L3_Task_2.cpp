@@ -37,14 +37,19 @@ public:
     {
         return this->user_input;
     }
-    Counter(int user_input)
+    Counter(int value = 1) : user_input(value) // новый конструктор, позволяющий обратиться как с параметром, так и без него.
+    {
+    }
+
+    /* старый вариант конструктора
+    Counter(int user_input) 
     {
         this->user_input = user_input;
     }
     Counter()
     {
         user_input = 1;
-    }
+    }*/
 
 private:
 
@@ -64,17 +69,29 @@ int main()
 {
     setlocale(LC_ALL, "Ru");
 
-    Counter command_counter;
-
+    bool userValueInitialization = true;
     int user_input = 0;
     char command = {};
-    string answer;
 
-    while (answer != "yes" && answer != "no")
+    Counter;
+    auto command_counter = userValueInitialization ? Counter(user_input) : Counter(); // экземпляр счётчика с 2-мя параметрами
+
+    while (userValueInitialization)
     {
-        cout << "Вы хотите указать начальное значение счётчика? Введите yes или no: ";
-        cin >> answer;
-        if (answer == "yes")
+        cout << "Вы хотите указать начальное значение счётчика? Введите \"1\" - (Да) или \"0\" - (Нет): ";
+        cin >> userValueInitialization;
+        if (userValueInitialization == true)
+        {
+            cout << "Введите свое число: ";
+            cin >> user_input;
+            break;
+        }
+        else
+        {
+            command_counter;
+            break;
+        }
+        /*if (answer == "yes")
         {
             cout << "Введите свое число: ";
             cin >> user_input;
@@ -85,7 +102,7 @@ int main()
         {
             command_counter;
             //command_counter.Set_by1();
-        }
+        }*/
     }
 
 
