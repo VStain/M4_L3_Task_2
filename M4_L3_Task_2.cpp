@@ -74,7 +74,6 @@ int main()
     int user_input = 0;
     char command = {};
 
-    auto command_counter = userValueInitialization ? Counter(user_input) : Counter(); // экземпляр счётчика с 2-мя параметрами
 
     cout << "Вы хотите указать начальное значение счётчика? Введите \"1\" - (Да) или \"0\" - (Нет): ";
     cin >> userValueInitialization;
@@ -83,11 +82,8 @@ int main()
         cout << "Введите свое число: ";
         cin >> user_input;
     }
-    else
-    {
-        command_counter;
-    }
-    /*if (answer == "yes")
+    auto command_counter = userValueInitialization ? Counter(user_input) : Counter(); // экземпляр счётчика с 2-мя параметрами
+    /*if (answer == "yes") // вариант с переменной string
     {
         cout << "Введите свое число: ";
         cin >> user_input;
@@ -125,7 +121,7 @@ int main()
           case Commands::Exit:
           {
               cout << "До свидания! ";
-              break;
+              return 0;
           }
           default:
           {
